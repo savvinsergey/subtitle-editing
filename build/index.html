@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subtitle editing</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .hide {
+            display: none;
+        }
+        .edit-btn {
+            width: 58px;
+        }
+    </style>
+</head>
+<body>
+
+    <!------ MAIN ------>
+
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="srtFile">
+                    <label class="custom-file-label" for="srtFile">Choose *.srt file</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="table-container"></div>
+        </div>
+    </section>
+
+    <!------ SCRIPTS ------>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
