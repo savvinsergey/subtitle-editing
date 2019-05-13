@@ -252,11 +252,6 @@
 	    return btn;
 	}
 
-	function _delete() {
-	    this.element.remove();
-	    this.events.emit('deleted', this.data);
-	}
-
 	function _edit() {
 	    this.element.querySelector('.edit-span').classList.add('hide');
 	    this.element.querySelector('.edit-input').classList.remove('hide');
@@ -295,6 +290,11 @@
 
 	        _cancel.call(this);
 	    }
+	}
+
+	function _delete() {
+	    this.element.remove();
+	    this.events.emit('deleted', this.data);
 	}
 
 	/*--------public section-----------*/
@@ -815,10 +815,16 @@
 	        var resultJson = [];
 	        var dataArray = rawData.split('\n\r');
 	        dataArray.forEach(function (item) {
+	            item = item.trim();
+	            if (!item) {
+	                console.warn('Empty subtitle');
+	                return true;
+	            }
+
 	            item = item.split('\n').filter(function (item) {
 	                return !!item;
 	            });
-	            if (!item.length || item.length < 3) {
+	            if (item.length < 3) {
 	                throw new Error('Wrong data');
 	            }
 
@@ -866,6 +872,10 @@
 
 	        var events = this.events;
 	        var input = document.querySelector(element);
+
+	        if (!input) {
+	            return;
+	        }
 
 	        input.addEventListener("click", function () {
 	            this.value = '';

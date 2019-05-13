@@ -8,8 +8,14 @@ function _serialize(rawData) {
         const resultJson = [];
         const dataArray = rawData.split('\n\r');
         dataArray.forEach((item) => {
+            item = item.trim();
+            if (!item) {
+                console.warn('Empty subtitle');
+                return true;
+            }
+
             item = item.split('\n').filter((item) => !!item);
-            if (!item.length || item.length < 3) {
+            if (item.length < 3) {
                 throw new Error('Wrong data');
             }
 
